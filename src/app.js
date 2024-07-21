@@ -1,16 +1,16 @@
+require('dotenv').config();
 const express = require('express');
 const { sequelize } = require('./models');
 const exampleQueue = require('./queue');
 const winston = require('winston');
 const routes = require('./routes');
-require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 // Logger configuration
 const logger = winston.createLogger({
-  level: 'info',
+  level: process.env.LOG_LEVEL || 'info',
   format: winston.format.json(),
   transports: [
     new winston.transports.Console({ format: winston.format.simple() }),
@@ -34,9 +34,7 @@ app.post('/enqueue', (req, res) => {
   res.send('Job added to the queue');
 });
 
-// Sync database and start server
-sequelize.sync().then(() => {
-  app.listen(port, () => {
-    logger.info(`Server is running on port ${port}`);
-  });
+// Start the server
+app.listen(port, () => {
+  logger.info(`Server is running on port ${port}`);
 });

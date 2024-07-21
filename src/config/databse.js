@@ -1,11 +1,9 @@
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
-console.log('Connecting to PostgreSQL:', process.env.DATABASE_URL);
-
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: 'postgres',
-  logging: console.log, // Enable SQL query logging for debugging
+  logging: console.log,
 });
 
 sequelize.authenticate()

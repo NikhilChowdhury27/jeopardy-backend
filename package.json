@@ -1,35 +1,28 @@
 {
   "name": "my-app",
   "version": "1.0.0",
-  "description": "A Node.js application with Express, Sequelize, PostgreSQL, Redis, Bull, dotenv, and Winston",
+  "description": "Node.js application with Express, Sequelize, PostgreSQL, Bull, Redis, dotenv, and Winston.",
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
-    "build": "npx sequelize-cli db:migrate && npm run build",
     "migrate": "npx sequelize-cli db:migrate",
-    "migrate:undo": "npx sequelize-cli db:migrate:undo",
-    "seed": "npx sequelize-cli db:seed:all",
-    "seed:undo": "npx sequelize-cli db:seed:undo:all",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint . --ext .js,.ts",
-    "lint:fix": "eslint . --ext .js,.ts --fix"
+    "seed": "npx sequelize-cli db:seed:all"
   },
-  "author": "Your Name",
-  "license": "ISC",
   "dependencies": {
-    "bull": "^3.22.0",
-    "dotenv": "^16.0.1",
-    "express": "^4.18.1",
-    "ioredis": "^4.28.0",
-    "pg": "^8.7.1",
-    "pg-hstore": "^2.3.4",
-    "sequelize": "^6.6.5",
+    "express": "^4.17.1",
+    "sequelize": "^6.3.5",
+    "pg": "^8.3.0",
+    "pg-hstore": "^2.3.3",
+    "redis": "^3.1.2",
+    "bull": "^3.20.0",
+    "dotenv": "^8.2.0",
     "winston": "^3.3.3"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15",
-    "eslint": "^7.32.0",
+    "nodemon": "^2.0.4",
     "sequelize-cli": "^6.2.0"
-  }
+  },
+  "author": "Your Name",
+  "license": "MIT"
 }
