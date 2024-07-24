@@ -9,7 +9,7 @@ services:
       - DATABASE_URL=postgres://postgres:password@db:5432/mydatabase
       - REDIS_URL=redis://redis:6379
       - JWT_SECRET=your_jwt_secret_key
-      - LOG_LEVEL=info
+      - LOG_LEVEL=development
     ports:
       - "3000:3000"
     depends_on:
@@ -17,8 +17,8 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
-    # volumes:
-    #   - .:/app
+    volumes:
+      - .:/app
     networks:
       - app-network
 
@@ -35,6 +35,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    volumes:
+      - postges:/var/lib/postgresql/data
     networks:
       - app-network
 
@@ -50,6 +52,8 @@ services:
     networks:
       - app-network
 
+volumes:
+  postges:
 networks:
   app-network:
     driver: bridge
