@@ -34,6 +34,8 @@ app.post('/enqueue', (req, res) => {
   res.send('Job added to the queue');
 });
 
+console.log("aadfadfafasfs")
+
 // Start the server
 app.listen(port, () => {
   logger.info(`Server is running on port ${port}`);
